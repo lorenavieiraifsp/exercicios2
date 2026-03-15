@@ -1,0 +1,50 @@
+rodada = 1
+
+tabuleiro = [[" ", " ", " "], 
+             [" ", " ", " "], 
+             [" ", " ", " "]]
+
+
+def mostrarTabuleiro():
+    for linha in tabuleiro:
+        for coluna in linha:
+            print(f"{coluna}|", end="")
+            print()
+            print ("------")
+
+def verificarVencedor ():
+    if tabuleiro[0][0] and tabuleiro[1][0] and tabuleiro[2][0] == "x" or "o":
+        return True
+    if tabuleiro[0][1] and tabuleiro[1][1] and tabuleiro[2][1] == "x" or "o":
+        return True
+    if tabuleiro[0][2] and tabuleiro[1][2] and tabuleiro[2][2] == "x" or "o":
+        return True
+    if tabuleiro[0][0] and tabuleiro[0][1] and tabuleiro[0][2] == "x" or "o":
+        return True
+    if tabuleiro[1][0] and tabuleiro[1][1] and tabuleiro[1][2] == "x" or "o":
+        return True
+    if tabuleiro[2][0] and tabuleiro[2][1] and tabuleiro[2][2] == "x" or "o":
+        return True
+    if tabuleiro[0][0] and tabuleiro[1][1] and tabuleiro[2][2] == "x" or "o":
+        return True
+    if tabuleiro[0][2] and tabuleiro[1][1] and tabuleiro[2][0] == "x" or "o":
+        return True
+    return False
+        
+
+while rodada <= 9:
+    mostrarTabuleiro()
+    linha = int(input("Digite a linha que você quer jogar"))
+    coluna = int(input("Digite a coluna que você quer jogar"))
+    if tabuleiro [linha][coluna] == "":
+
+        if rodada % 2 == 1:
+            tabuleiro = [linha][coluna] = "x"
+        else:
+            tabuleiro = [linha][coluna] = "o"
+        if(verificarVencedor()):
+            mostrarTabuleiro()
+            print("Jogo finalizado")
+        rodada += 1    
+    else: 
+        print("Casa ocupada")
